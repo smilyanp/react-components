@@ -1,0 +1,54 @@
+FOLDER PER COMPONENT
+One option is to have a folder per component
+
+- src/
+--- App/
+----- index.js
+----- component.js
+----- test.js
+----- style.css
+--- List/
+----- index.js
+----- component.js
+----- test.js
+----- style.css
+----- hooks.js
+----- types.js
+----- utils.js
+----- story.js
+----- ListItem/
+------- index.js
+------- component.js
+------- test.js
+------- style.css
+
+This keeps styles and tests local to the component, so that everything is encapsulated in the same area.
+To import the component you can simply import the index file `src/App`which will take the index.js
+which can be exporting the component.js.
+You can omit specifying the index when importing, because the resolver understand that that's the default file.
+
+The other option is to keep a folder per component, but pre-pend the file name with the component name:
+
+- src/
+--- App/
+----- index.js
+----- App.js
+----- App.test.js
+----- App.style.css
+--- List/
+----- index.js
+----- List.js
+----- List.test.js
+----- List.style.css
+----- List.hooks.js
+----- List.types.js
+----- List.utils.js
+----- List.story.js
+
+This might make it easier when searching in the IDE for a component, but might also feel redundant and repetitive.
+
+Ultimately, all the benefit is when you have collapsed the folders and can easily find your components:
+
+- src/
+--- App/
+--- List/

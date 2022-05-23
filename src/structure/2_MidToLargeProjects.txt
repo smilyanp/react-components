@@ -1,0 +1,44 @@
+ADD MORE SEPARATION BETWEEN GENERIC AND REACT SPECIFIC ELEMENTS
+
+- Separate hooks, context, services and re-usable utilities from React components
+
+Group all the components in a /components/ folder.
+Separate the utilities in their own folders.
+
+Each component can have it's own hooks and utilities, but if a hook or a utility
+is used in more than one component, then it is moved to the general folder.
+
+You can break up a utility or a service into a folder with multiple files
+as it grows if needed, similar to how we did with the components.
+
+- src/
+--- components/
+----- App/
+------- index.js
+------- component.js
+------- test.js
+------- style.css
+----- List/
+------- index.js
+------- component.js
+------- test.js
+------- style.css
+--- hooks/
+----- useClickOutside.js
+----- useScrollDetect.js
+--- context/
+----- Session.js
+--- utils/
+----- ErrorTracking/
+------- index.js
+------- service.js
+------- test.js
+----- Format/
+------- Date/
+--------- index.js
+--------- service.js
+--------- test.js
+------- Currency/
+--------- index.js
+--------- service.js
+--------- test.js

@@ -1,0 +1,5 @@
+- It's ok to have several components in the same file, as long as they are tightly coupled to each other
+- When a component is re-usable it should be separated into a separate file
+- Grow the structure as the project evolves, so you can move fast
+- Don't nest components more than two folders deep. There are exceptions, but that's a good rule
+- A project is constantly evolving and we need to maintain and change it respectively. It is not set in stone

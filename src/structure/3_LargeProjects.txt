@@ -1,0 +1,74 @@
+SEPARATE BASED ON FEATURES
+
+This is the next level, where you can group React components that server a similar purpose,
+and thus produce a "feature" together. And you split out all the components that are generic
+into their own area.
+
+Thus, the /components/ folder becomes for re-usable components and the other components are
+moved into a feature specific folder.
+
+Similarly, now hooks, utils, that are tightly coupled to a feature, can be moved in the feature folder.
+The reusable ones can stay in the shared folder.
+
+I.e. you can make this:
+
+- src/
+--- components/
+----- App/
+----- List/
+----- Input/
+----- Button/
+----- Checkbox/
+----- Radio/
+----- Dropdown/
+----- Profile/
+----- Avatar/
+----- MessageItem/
+----- MessageList/
+----- PaymentForm/
+----- PaymentWizard/
+----- ErrorMessage/
+----- ErrorBoundary/
+--- hooks/
+--- context/
+--- utils/
+
+into:
+
+- src/
+--- feature/
+----- User/
+------- Profile/
+------- Avatar/
+----- Message/
+------- MessageItem/
+------- MessageList/
+----- Payment/
+------- PaymentForm/
+------- PaymentWizard/
+------- utils/
+--------- Currency/
+----------- index.js
+----------- utils.js
+----------- test.js
+----- Error/
+------- ErrorMessage/
+------- ErrorBoundary/
+--- components/
+----- App/
+----- List/
+----- Input/
+----- Button/
+----- Checkbox/
+----- Radio/
+----- Dropdown/
+--- hooks/
+--- context/
+--- utils/
+----- Format/
+------- Date/
+--------- index.js
+--------- utils.js
+--------- test.js
+
+

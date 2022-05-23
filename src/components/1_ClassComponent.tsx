@@ -33,11 +33,11 @@ export class ClassComponent extends React.Component<ComponentProps, ComponentSta
         this.increase = this.increase.bind(this);
     }
       
-   increase(){
-       this.setState({
-           count: this.state.count + 1
-       });
-   }
+    increase(){
+        this.setState({
+            count: this.state.count + 1
+        });
+    }
   
     render(){
         return (
