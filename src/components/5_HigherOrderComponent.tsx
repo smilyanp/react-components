@@ -27,10 +27,13 @@ export const ExampleHOF = (name: string) => {
 }
 const getData = ExampleHOF('Smith');
 const result = getData(30);
+
+// const result = ExampleHOF('Smith')(30)
+
 // result:
 // {
 //    name: 'Smith',
-//    age: 16
+//    age: 30
 // }
 
 /*
@@ -45,25 +48,42 @@ const result = getData(30);
 */
 
 const getUsernames = async () => { };
+const Loading = () => {
+    return (
+        <div>Loading</div>
+    )
+};
 
 export const WithUsernames = ({ WrappedComponent }: any) => {
+    const [loading, setLoading] = useState(true)
     const [usernames, setUsernames] = useState([])
     useEffect(() => {
         getUsernames().then((response: any) => {
             setUsernames(response.data)
+            setLoading(false)
         })
     }, [])
 
+    if (loading) {
+        return <Loading />
+    }
     if (usernames) {
         return <WrappedComponent data={usernames} />
     }
 }
 
-// <WithUsernames WrappedComponent={...}  />
+// <WithUsernames WrappedComponent={List}  />
 
 export const withData = (data: any) => {
+    console.log(data) // { name: 'Smith' }
+    
     return (WrappedComponent: any) => <WrappedComponent data={data} />
 }
+
+const componentWithData = withData({ name: 'Smith' })
+const Component = () => <div></div>
+componentWithData(Component)
+
 
 // const PopulatedComponent = withData(data)(WrappedComponent)
 // <PopulatedComponent />
