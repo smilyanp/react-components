@@ -28,3 +28,4 @@
     The components may import it and use that function, object, or a class, without extending it.
 */
 
+export const Test = () => <div></div>
