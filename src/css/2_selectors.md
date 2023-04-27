@@ -191,10 +191,102 @@ Style the selected text in every div.
 
 ## Complex selectors
 
-### Descendant combinator
+All the selectors so far have been extremely powerful, but mostly very generic, for wide brush strokes of capturing many elements together. However, sometimes we need much more fine-grained selection and this is where complex selectors come in hand.
 
-### Descendant combinator
+It's worth pointing that these selectors can only cascade and select downwards, but not upwards (their parents).
 
-### Subsequent- sibling combinator
+### Combinators
 
-### Subsequent- sibling combinator
+Combinators sit **between** two selectors and help you narrow them down. They help you select elements based on **where they are positioned in the document**.
+E.g. `p > b`.
+
+#### Descendant combinator
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator
+
+The descendant combinator allows us to select a child inside of a parent. A child is an element enclosed in another.
+
+```
+<p>I am not ready to be a child yet</p>
+<div>
+    <p>I am a child</p>
+    <section>
+        <p>I am also a child of the div, just more deeply nested</p>
+    </section>
+</div>
+```
+
+In this case the `div` is the parent and the `p` is the child.
+
+To select the p (the is specifically a child of the div) we can see CSS
+
+```
+div p {
+    color: red
+}
+```
+
+The space ` ` here is what lets the browser know we are trying to select a descendant.
+
+# Next sibling combinator
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator
+
+You can select an element that immediately follows another element (in the DOM tree) by using the `+` character in the selector.
+
+```
+div + p {
+    color: red
+}
+
+```
+
+The above selects all paragraphs that come immediately after a div:
+
+```
+<p>I won't be selected</p>
+<div>
+    Some irrelevant functionality
+</div>
+<p>I come after a div, so I will be selected</p>
+```
+
+#### Child combinator
+
+A child combinator, or a direct descendant selector is allows you to have more control over the recursion that comes with selectors. When you use the `>` combinator, your selector applies only to the **direct descendants**, or "one level deep" elements of your element.
+
+```
+div > p {
+    color: red
+}
+
+```
+
+```
+<p>I won't be selected</p>
+<div>
+    <p>I will be selected</p>
+    <div>
+        <p>I won't be selected</p>
+    </div>
+<div>
+```
+
+#### Subsequent sibling combinator
+
+`TODO`
+
+### Compound selectors
+
+You can combine selectors to increase specificity and readability. For example, target all paragraphs with a specific class
+
+```
+p.bold-font {
+    font-size: bold
+}
+```
+
+```
+<p>Won't be selected</p>
+<p class="bold-font">Will be selected</p>
+```
