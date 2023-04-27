@@ -1,5 +1,7 @@
 # Selectors
 
+Training game: https://flukeout.github.io/
+
 ## The parts of a selector rule
 
 - Selector
